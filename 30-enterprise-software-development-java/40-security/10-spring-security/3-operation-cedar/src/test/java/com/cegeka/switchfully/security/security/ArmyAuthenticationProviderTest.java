@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 
 import java.util.List;
@@ -25,15 +26,12 @@ class ArmyAuthenticationProviderTest {
         armyAuthenticationProvider = new ArmyAuthenticationProvider(authenticationServiceMock);
     }
 
-/*
     @Test
     void authenticate_whenValidAuthentication_returnsAuthenticationObject() {
         // GIVEN
-        ArmyAuthentication authentication = new ArmyAuthentication(
-                ExternalAuthentication.externalAuthentication()
-                        .withUsername("user")
-                        .withPassword("hello")
-                        .withRoles(List.of("boss", "ceo"))
+
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                "user","hello",List.of(new ArmyGrantedAuthority("boss"), new ArmyGrantedAuthority("ceo"))
         );
         // WHEN
         Mockito.when(authenticationServiceMock.getUser("user", "hello"))
@@ -48,11 +46,8 @@ class ArmyAuthenticationProviderTest {
     @Test
     void authenticate_whenInvalidAuthentication_throwBadCredentialsException() {
         // GIVEN
-        ArmyAuthentication authentication = new ArmyAuthentication(
-                ExternalAuthentication.externalAuthentication()
-                        .withUsername("user")
-                        .withPassword("hello")
-                        .withRoles(List.of("boss", "ceo"))
+        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+                "user","hello",List.of(new ArmyGrantedAuthority("boss"), new ArmyGrantedAuthority("ceo"))
         );
         // WHEN
         Mockito.when(authenticationServiceMock.getUser("user", "hello"))
@@ -60,5 +55,4 @@ class ArmyAuthenticationProviderTest {
         // THEN
         assertThrows(BadCredentialsException.class, () -> armyAuthenticationProvider.authenticate(authentication));
     }
-}*/
 }

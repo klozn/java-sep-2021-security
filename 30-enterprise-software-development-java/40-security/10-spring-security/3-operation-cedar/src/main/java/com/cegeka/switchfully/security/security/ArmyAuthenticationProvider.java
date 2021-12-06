@@ -32,7 +32,7 @@ public class ArmyAuthenticationProvider implements AuthenticationProvider {
         }
         ExternalAuthentication externalAuthentication = optionalExternalAuthentication.get();
         return new UsernamePasswordAuthenticationToken(
-                authentication.getPrincipal(), authentication.getCredentials(),
+                externalAuthentication.getUsername(), externalAuthentication.getPassword(),
                 externalAuthentication.getRoles().stream().map(ArmyGrantedAuthority::new).collect(Collectors.toList()));
     }
 
