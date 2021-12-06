@@ -8,7 +8,7 @@
         <groupId>com.switchfully.enterprise.software.development</groupId>
         <artifactId>30-enterprise-software-development-java</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../..</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <packaging>pom</packaging>
