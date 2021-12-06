@@ -37,4 +37,5 @@ public class ExternalAuthentication {
     public List<String> getRoles() {
         return roles;
     }
+
 }

@@ -29,19 +29,19 @@ public class ArmyResource {
 
     @PostMapping(path = "/promote/{name}")
     @PreAuthorize("hasRole('ROLE_HUMAN_RELATIONSHIPS')")
-    public void promotePrivate(@PathVariable(value = "name") String name) {
-        //TODO
+    public String promotePrivate(@PathVariable(value = "name") String name) {
+        return "Promoted " + name;
     }
 
     @PostMapping(path = "/discharge/{name}")
     @PreAuthorize("hasRole('ROLE_HUMAN_RELATIONSHIPS')")
-    public void dischargeSoldier(@PathVariable(value = "name") String name) {
-        //TODO
+    public String dischargeSoldier(@PathVariable(value = "name") String name) {
+        return "Discharged " + name;
     }
 
     @GetMapping(path = "/nuke")
     @PreAuthorize("hasRole('ROLE_GENERAL')")
     public String launchNukes() {
-        return "The world ends. Not with a bang but a whimper";
+        return "I am become death, destructor of worlds.";
     }
 }

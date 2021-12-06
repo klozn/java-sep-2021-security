@@ -15,10 +15,12 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final AuthenticationEntryPoint authEntryPoint;
+    private final ArmyAuthenticationProvider authProvider;
 
     @Autowired
-    public SecurityConfig(AuthenticationEntryPoint authEntryPoint) {
+    public SecurityConfig(AuthenticationEntryPoint authEntryPoint, ArmyAuthenticationProvider authProvider) {
         this.authEntryPoint = authEntryPoint;
+        this.authProvider = authProvider;
     }
 
     @Override
@@ -48,14 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("ZWANETTA").password("{noop}WORST").roles("CIVILIAN")
-                .and()
-                .withUser("JMILLER").password("{noop}THANKS").roles("PRIVATE")
-                .and()
-                .withUser("UNCLE").password("{noop}SAM").roles("HUMAN_RELATIONSHIPS")
-                .and()
-                .withUser("GENNY").password("{noop}RALLY").roles("GENERAL");
+        auth.authenticationProvider(authProvider);
     }
 
 }
