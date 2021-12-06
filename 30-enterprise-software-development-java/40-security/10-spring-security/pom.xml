@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.switchfully.enterprise.software.development</groupId>
+        <artifactId>30-enterprise-software-development-java</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <relativePath>../..</relativePath>
+    </parent>
+
+    <packaging>pom</packaging>
+
+    <artifactId>10-spring-security</artifactId>
+
+    <modules>
+        <module>1-operation-avocado</module>
+        <module>2-operation-baobab</module>
+        <module>3-operation-cedar</module>
+        <module>4-operation-dogwood</module>
+        <module>5-operation-jericho</module>
+    </modules>
+
+    <properties>
+        <rest-assured.version>4.3.3</rest-assured.version>
+        <guava.version>30.1-jre</guava.version>
+        <groovy.version>3.0.7</groovy.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>spring-mock-mvc</artifactId>
+            <version>${rest-assured.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>
